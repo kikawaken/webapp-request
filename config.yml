@@ -1,0 +1,156 @@
+name: Azure Web App Request
+description: Azure Web App の作成申請を行います
+title: "Azure Web App Request"
+labels:
+  - azure-webapp-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Azure Web App 作成申請
+
+        このフォームから申請内容を入力してください。
+        申請後、Private Repository 側で自動 Precheck が実行されます。
+
+        **Azure リソースの作成は、Private Repository 側で `/approve` が実行された後に行われます。**
+
+  - type: input
+    id: resource_group
+    attributes:
+      label: Resource Group
+      description: 作成先の Resource Group 名
+      placeholder: "rg-webapp-dev"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: location
+    attributes:
+      label: Azure Region
+      description: Azure リージョン
+      options:
+        - japaneast
+        - japanwest
+        - eastus
+        - eastus2
+        - westus2
+        - southeastasia
+    validations:
+      required: true
+
+  - type: input
+    id: app_service_plan
+    attributes:
+      label: App Service Plan
+      description: 使用する App Service Plan 名
+      placeholder: "asp-webapp-dev"
+    validations:
+      required: true
+
+  - type: input
+    id: webapp_name
+    attributes:
+      label: Web App Name
+      description: Azure Web App 名（小文字・数字・ハイフン、60文字以内）
+      placeholder: "my-webapp-dev"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: runtime
+    attributes:
+      label: Runtime
+      options:
+        - "Python latest"
+        - "Python 3.13"
+        - "Python 3.12"
+        - "Node.js latest"
+        - "Node.js 22"
+        - "Node.js 20"
+        - ".NET latest"
+        - ".NET 8.0"
+        - "Java latest"
+        - "Java 21"
+        - "Java 17"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - Linux
+        - Windows
+    validations:
+      required: true
+
+  - type: dropdown
+    id: sku
+    attributes:
+      label: App Service Plan SKU
+      options:
+        - B1
+        - B2
+        - S1
+        - P1v3
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - DEV
+        - TEST
+        - PROD
+    validations:
+      required: true
+
+  - type: dropdown
+    id: https_only
+    attributes:
+      label: HTTPS Only
+      options:
+        - "true"
+        - "false"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: managed_identity
+    attributes:
+      label: Managed Identity
+      options:
+        - "true"
+        - "false"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: public_network_access
+    attributes:
+      label: Public Network Access
+      options:
+        - "true"
+        - "false"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: application_insights
+    attributes:
+      label: Application Insights
+      options:
+        - "true"
+        - "false"
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        <!-- AZURE_WEBAPP_REQUEST_FORM_V1 -->
+        送信後、Issue の内容を変更しないでください。
